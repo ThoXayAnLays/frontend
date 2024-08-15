@@ -73,7 +73,7 @@ export const Dapp = () => {
   const mintERC20Tokens = async () => {
     try {
       const erc20Contract = new ethers.Contract(MyERC20TokenAddress, MyERC20TokenArtifact.abi, signer);
-      const tx = await erc20Contract.mint(userAddress, ethers.utils.parseUnits("10000", 18), { gasLimit: ethers.utils.hexlify(600000) }); // Mint 1000 tokens
+      const tx = await erc20Contract.mint(userAddress, ethers.utils.parseUnits("10000", 18), { gasLimit: ethers.utils.hexlify(9000000) }); // Mint 1000 tokens
       setTxBeingSent(tx.hash);
       await tx.wait();
       await getERC20Balance();
@@ -106,7 +106,7 @@ export const Dapp = () => {
       await approvalTx.wait();
   
       // Deposit tokens
-      const depositTx = await depositContract.deposit(ethers.utils.parseUnits(amount, 18), { gasLimit: ethers.utils.hexlify(600000) }); // Increased gas limit
+      const depositTx = await depositContract.deposit(ethers.utils.parseUnits(amount, 18), { gasLimit: ethers.utils.hexlify(9000000) }); // Increased gas limit
       setTxBeingSent(depositTx.hash);
       await depositTx.wait();
   
